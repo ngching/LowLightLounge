@@ -25,8 +25,9 @@ p {
     font-family: "Kalam", cursive;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 24px;
     color: var(--midnight-blue);
+    margin: 0;
 }
 
 /* header */
@@ -58,8 +59,14 @@ p {
     height: 45vh;
     margin: 0 3rem;
 }
-.above-counter-container div {
-    flex: 1;
+.above-counter-container div:nth-child(1) {
+    flex: 40%;
+}
+.above-counter-container div:nth-child(2) {
+    flex: 35%;
+}
+.above-counter-container div:nth-child(3) {
+    flex: 25%;
 }
 /* Above Counter - Workstation */
 .clock {
@@ -82,21 +89,35 @@ p {
     top: 1rem;
 }
 /* Above Counter - Serving*/
-/* .serving {
-    position: relative;
+.serving {
+    margin: 3rem 0 0 6rem;
+    z-index: 1;
 }
-.bartender-speech-bubble {
-    padding: 1rem 2rem;
-    background-image: url( '/assets/speech_bubble_bartender.svg' );
-    background-repeat: no-repeat;
+.serving-top {
     display: flex;
-    justify-content: flex-end;
-} */
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 3rem;
+}
+.cocktail {
+    position: relative;
+    top: 3rem;
+}
+.bartender {
+    position: relative;
+    right: 12rem;
+    /* top: 3rem; */
+}
+.bartender img{
+    width: 300px;
+}
 /* Above Counter - Customer */
 .order {
-    padding: 1rem 2rem;
+    padding: 2rem 2.5rem;
     background-image: url( '/assets/speech_bubble_customer.svg' );
     background-repeat: no-repeat;
+    /* position: relative;
+    right: 6rem; */
 }
 .character {
     display: flex;
@@ -104,8 +125,11 @@ p {
     position: relative;
     bottom: 2.5rem;
 }
+.character img{
+    width: 200px;
+}
 
-.instraction-outer-container {
+.instruction-outer-container {
     background-color: var(--gray);
     padding: 1rem 0 1rem 3rem;
 }
