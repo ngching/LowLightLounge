@@ -68,6 +68,7 @@ p {
 .action-animation {
     display: flex;
     justify-content: flex-end;
+    visibility: hidden;
 }
 .shake {
     height: 30vh;

@@ -34,8 +34,8 @@
                     <img src="/assets/clock01.svg" alt="Clock" />
                 </div>
                 <div class="action-animation">
-                    <img class="shake" src="/assets/shake.gif" alt="Shake" />
-                    <!-- <img class="stir" src="/assets/stir.gif" alt="Stir" /> -->
+                    <img class="shake" src="/assets/shake.gif" alt="Shake" id="shaking"/>
+                    <img class="stir" src="/assets/stir.gif" alt="Stir" id="stirring" />
                 </div>
                 <!-- <div class="serving">
                     <div class="bartender-speech-bubble"><p>Enjoy...</p></div>
@@ -48,14 +48,14 @@
                 </div> -->
             </div>
             <div class="customer-container">
-                <div class="order" id="order"><p>Margarita Please</p></div>
+                <div class="order" id="customerOrder"><p>Margarita Please</p></div>
                 <div class="character">
-                    <img src="/assets/character_01.svg" alt="Character" />
+                    <img src="/assets/character_01.svg" alt="Character" name="customer"/>
                 </div>
             </div>
             <div class="instraction-outer-container">
-                <div>Instruction</div>
-                <div id="instructions" class="instructions"></div>
+                <!-- <div>Instruction</div> -->
+                <div id="instructions"></div>
             </div>
         </div>
 
@@ -63,45 +63,45 @@
 
         <div class="under-counter-container">
             <div class="under-counter-bar-stock">
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/vodka.svg" alt="vodka button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/apple_liqueur.svg" alt="apple liqueur button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/tequila.svg" alt="tequila button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/lemon_juice.svg" alt="lemon juice button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/lime_juice.svg" alt="lime juice button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/orange_liqueur.svg" alt="orange liqueur button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/syrup.svg" alt="syrup button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/soda.svg" alt="soda button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/orange_juice.svg" alt="orange juice button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/white_wine.svg" alt="white wine button" /></div>
+                <div onclick="addIngred('Vodka')"><img src="assets/buttons_default/vodka.svg" alt="vodka button" /></div>
+                <div onclick="addIngred('Apple Liqueur')"><img src="assets/buttons_default/apple_liqueur.svg" alt="apple liqueur button" /></div>
+                <div onclick="addIngred('Tequila')"><img src="assets/buttons_default/tequila.svg" alt="tequila button" /></div>
+                <div onclick="addIngred('Lemon Juice')"><img src="assets/buttons_default/lemon_juice.svg" alt="lemon juice button" /></div>
+                <div onclick="addIngred('Lime Juice')"><img src="assets/buttons_default/lime_juice.svg" alt="lime juice button" /></div>
+                <div onclick="addIngred('Orange Liqueur')"><img src="assets/buttons_default/orange_liqueur.svg" alt="orange liqueur button" /></div>
+                <div onclick="addIngred('Syrup')"><img src="assets/buttons_default/syrup.svg" alt="syrup button" /></div>
+                <div onclick="addIngred('Soda')"><img src="assets/buttons_default/soda.svg" alt="soda button" /></div>
+                <div onclick="addIngred('Orange Juice')"><img src="assets/buttons_default/orange_juice.svg" alt="orange juice button" /></div>
+                <div onclick="addIngred('White Wine')"><img src="assets/buttons_default/white_wine.svg" alt="white wine button" /></div>
             </div>
             <div class="under-counter-garnish">
                 <div>
-                    <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/apple.svg" alt="apple button" /></div>
-                    <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/orange.svg" alt="orange button" /></div>
-                    <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/ice.svg" alt="ice button" /></div>
+                    <div onclick="addIngred('Apple Slice')"><img src="assets/buttons_default/apple.svg" alt="apple button" /></div>
+                    <div onclick="addIngred('Orange Slice')"><img src="assets/buttons_default/orange.svg" alt="orange button" /></div>
+                    <div onclick="addIngred('Ice')"><img src="assets/buttons_default/ice.svg" alt="ice button" /></div>
                 </div>
                 <div>
-                    <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/cherry.svg" alt="cherry button" /></div>
-                    <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/lime.svg" alt="lime button" /></div>
-                    <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/salt.svg" alt="salt button" /></div>
+                    <div onclick="addIngred('Cherry')"><img src="assets/buttons_default/cherry.svg" alt="cherry button" /></div>
+                    <div onclick="addIngred('Lime')"><img src="assets/buttons_default/lime.svg" alt="lime button" /></div>
+                    <div onclick="addIngred('Salt')"><img src="assets/buttons_default/salt.svg" alt="salt button" /></div>
                 </div>
             </div>
             <div class="under-counter-action">
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/stir.svg" alt="stir button" /></div>
-                <div onclick="addIngred('Dry Vermouth')"><img src="assets/buttons_default/shake.svg" alt="shake button" /></div>
+                <div onclick="doOrder('Stir')"><img src="assets/buttons_default/stir.svg" alt="stir button" /></div>
+                <div onclick="doOrder('Shake')"><img src="assets/buttons_default/shake.svg" alt="shake button" /></div>
             </div>
         </div>
     </div>
     <script src="./script/main.js"></script>
     <script>
         // can move to main.js later
-        document.querySelectorAll(".under-counter-container img").forEach(img => {
-            const defaultSrc = img.src;
-            const hoverSrc = defaultSrc.replace("buttons_default", "buttons_hover");
+        // document.querySelectorAll(".under-counter-container img").forEach(img => {
+        //     const defaultSrc = img.src;
+        //     const hoverSrc = defaultSrc.replace("buttons_default", "buttons_hover");
 
-            img.addEventListener("mouseover", () => img.src = hoverSrc);
-            img.addEventListener("mouseout", () => img.src = defaultSrc);
-        });
+        //     img.addEventListener("mouseover", () => img.src = hoverSrc);
+        //     img.addEventListener("mouseout", () => img.src = defaultSrc);
+        // });
     </script>
 </body>
 </html>
