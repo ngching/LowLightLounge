@@ -1,22 +1,19 @@
-const avaIngred = ["Gin", "Dry Vermouth", "Tequila", "Triple Sec", "White Rum",
-    "Lime Juice", "Salted Rim", "Syrup", "Soda", "Lemon", "Lime", "Ice"];
-//????
 const martini = {
-    name: "50/50 Martini",
-    ingred: ["Gin", "Dry Vermouth", "Lemon", "Ice"],
-    action: "Stir"
+    name: "Green Apple Martini",
+    ingred: ["Vodka", "Apple Liqueur", "Lemon Juice", "Apple Slice", "Cherry", "Ice"],
+    action: "Shake"
 };
 const margarita = {
     name: "Classic Margarita",
-    ingred: ["Tequila", "Triple Sec", "Lime Juice", "Salted Rim", "Lime", "Ice"],
+    ingred: ["Tequila", "Orange Liquor", "Lime Juice", "Salt", "Lime", "Ice"],
     action: "Shake"
 };
-const mojito = {
-    name: "Mojito",
-    ingred: ["White", "Dry Vermouth", "Lime Juice", "Syrup", "Soda", "Ice"],
+const thai = {
+    name: "Thai Basil Sangria",
+    ingred: ["Syrup", "White Wine", "Orange Juice", "Orange Slice", "Soda", "Ice"],
     action: "Stir"
 };
-const avaDrinks = [martini, margarita, mojito];
+const avaDrinks = [martini, margarita, thai];
 
 let point = 0;
 let currIngred = [];
@@ -44,15 +41,18 @@ function countdownTimer(minutes, seconds) {
                     countdownTimer(minutes - 1, 59);
                 }, 1000);
             }
-            // end game????
+            // end game
+            // window.location.href = "";
         }
     }
     tick();
 }
 
 function print() {
-    var instruct = document.getElementById("instructions");
-    instruct.innerHTML = "Order: " + currOrder.name + "<p> Ingredients: <p> " +
+    // var customer = document.getElementById("customer");
+    // customer.innerHTML = currOrder.name + " please";
+    var instructions = document.getElementById("instructions");
+    instructions.innerHTML = "Order: " + currOrder.name + "<p> Ingredients: <p> " +
     currOrder.ingred.join("<p>") + "<p> Action: " + currOrder.action;
 }
 
@@ -61,10 +61,10 @@ function addIngred(ingredient) {
 }
 
 function correctIngred() {
-    let correct = (martini.ingred.length == currIngred.length);
+    let correct = (currOrder.ingred.length == currIngred.length);
     if (correct) {
         for (let i = 0; i < currIngred.length; i++) {
-            if (!martini.ingred.includes(currIngred[i])) {
+            if (!currOrder.ingred.includes(currIngred[i])) {
                 correct = false;
             }
         }
@@ -73,16 +73,30 @@ function correctIngred() {
 }
 
 function doOrder(action) {
-    if (correctIngred() && action == currOrder.action) {
-        doneOrder.push(currOrder.name);
-        updateScore();
-    }
-    currIngred = [];
-    currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
-    print();
+    element = document.getElementById("animation");
+    element.style.visibility = "visible";
+    setTimeout(function() {
+        document.getElementById("test").style.visibility = "hidden";
+        if (correctIngred() && action == currOrder.action) {
+            doneOrder.push(currOrder.name);
+            updateScore();
+        }
+        currIngred = [];
+        currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
+        print();
+    }, 1000);
 }
 
 function updateScore() {
     var score = document.getElementById("score");
     score.innerHTML = String(++point);
+}
+
+function frequency(order) {
+    let i = 0;
+    doneOrder.forEach(done => {
+        if (done == order)
+            i++;
+    });
+    return i;
 }
