@@ -1,3 +1,5 @@
+localStorage.clear();
+
 const martini = {
     name: "Green Apple Martini",
     ingred: ["Vodka", "Apple Liqueur", "Lemon Juice", "Apple Slice", "Cherry", "Ice"],
@@ -15,6 +17,8 @@ const thai = {
 };
 const avaDrinks = [martini, margarita, thai];
 
+const audioPlayer = document.getElementById('audioPlayer');
+
 let point = 0;
 let currIngred = [];
 let currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
@@ -24,24 +28,18 @@ let doneOrder = [];
 document.addEventListener("load", setup());
 
 function setup() {
-    countdownTimer(0, 30);
+    countdownTimer(0, 60);
     print();
     // document.getElementById("score").innerHTML = point;
 }
 
 function countdownTimer(minutes, seconds) {
     function tick() {
-        if (seconds == 0 && minutes == 0) {
-            clearTimeout();
+        if (minutes == 0 && seconds == 0) {
             window.location.href = "end.html";
-            document.getElementById("end").addEventListener("load", setupEnd());
-    //         window.onload = function() {
-    //             document.getElementById("finalscore").innerHTML = point;
-    // document.getElementById("martini").innerHTML = frequency("Green Apple Martini");
-    // document.getElementById("margarita").innerHTML = frequency("Classic Margarita");
-    // document.getElementById("thai").innerHTML = frequency("Thai Basil Sangria");
-    //         }        
-        }  
+            finish();
+            //window.onload = function() {window.document.body.onload = setupEnd};
+        }
         var counter = document.getElementById("timer");
         counter.innerHTML = String(minutes) + ":" + (seconds < 10 ? "0" : "") + String(seconds);
         seconds--;
@@ -153,23 +151,22 @@ function doOrder(action) {
 
 function updateScore() {
     var score = document.getElementById("score");
+    audioPlayer.play();
     score.innerHTML = String(++point);
 }
 
-// document.getElementById("end").addEventListener("load", setupEnd());
-// function setupEnd() {
-//     document.getElementById("finalscore").innerHTML = 87;
-//     document.getElementById("martini").innerHTML = frequency("Green Apple Martini");
-//     document.getElementById("margarita").innerHTML = frequency("Classic Margarita");
-//     document.getElementById("thai").innerHTML = frequency("Thai Basil Sangria");
-// }
+function frequency(order) {
+    let i = 0;
+    doneOrder.forEach(done => {
+        if (done == order)
+            i++;
+    });
+    return i;
+}
 
-// function frequency(order) {
-//     let doneOrder = JSON.parse(localStorage.getItem("doneOrder")) || [];
-//     let i = 0;
-//     doneOrder.forEach(done => {
-//         if (done == order)
-//             i++;
-//     });
-//     return i;
-// }
+function finish() {
+    localStorage.setItem("finalScore", point);
+    localStorage.setItem("greenAppleMartini", frequency("Green Apple Martini"));
+    localStorage.setItem("classicMargarita", frequency("Classic Margarita"));
+    localStorage.setItem("thaiBasilSangria", frequency("Thai Basil Sangria"));
+}
