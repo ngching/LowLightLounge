@@ -40,6 +40,10 @@ body {
     margin: 1rem;
 }
 
+.instructions {
+    margin: 1rem;
+}
+
 /* Counter */
 .counter {
     height: 5vh;

@@ -11,9 +11,11 @@
         <div class="header">
             <div><h1>Logo</h1></div>
             <div class="header-right">
-                <div>Score</div>
-                <div>Timer</div>
-                <div>0 Order Served</div>
+                <div>
+                    Score: <span id = "score">0</span>
+                </div>
+                <div id = "timer">Timer</div>
+                <!-- <div>0 Order Served</div> -->
             </div>
         </div>
         <div class="above-counter-container">
@@ -22,13 +24,16 @@
                 <div class="order" id="order">Margarita Please</div>
                 <div>Customer Image here</div>
             </div>
-            <div>Instruction</div>
+            <div>
+                <div>Instruction</div>
+                <div id="instructions" class = "instructions"></div>
+            </div>
         </div>
         <div class="counter"></div>
         <div class="under-counter-container">
             <div class="under-counter-bar-stock">
-                <button>Gin (G)</button>
-                <button>Dry (D)</button>
+                <button onclick="addIngred('Gin')">Gin (G)</button>
+                <button onclick="addIngred('Dry Vermouth')">Dry (D)</button>
                 <button>Teq (T)</button>
                 <button>Triple (S)</button>
                 <button>Lime (J)</button>
@@ -37,16 +42,17 @@
                 <button>Soda (A)</button>
             </div>
             <div class="under-counter-garnish">
-                <button>Lemon (L)</button>
-                <button>Ice (I)</button>
+                <button onclick="addIngred('Lemon')">Lemon (L)</button>
+                <button onclick="addIngred('Ice')">Ice (I)</button>
                 <button>Lime (E)</button>
                 <button>Salt (M)</button>
             </div>
             <div class="under-counter-action">
-                <button>Stir (1)</button>
-                <button>Shake (2)</button>
+                <button onclick="doOrder('Stir')">Stir (1)</button>
+                <button onclick="doOrder('Shake')">Shake (2)</button>
             </div>
         </div>
     </div>
+    <script src="./script/main.js"></script>
 </body>
 </html>
