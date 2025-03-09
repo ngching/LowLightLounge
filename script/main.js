@@ -1,5 +1,3 @@
-localStorage.clear();
-
 const martini = {
     name: "Green Apple Martini",
     ingred: ["Vodka", "Apple Liqueur", "Lemon Juice", "Apple Slice", "Cherry", "Ice"],
@@ -22,10 +20,11 @@ const audioPlayer = document.getElementById('audioPlayer');
 let point = 0;
 let currIngred = [];
 let currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
-let doneOrder = [];
+// let doneOrder = [];
+// let doneOrder = ["Classic Margarita", "Thai Basil Sangria", "Green Apple Martini", "Green Apple Martini"];
 
 function setup() {
-    countdownTimer(1, 0);
+    countdownTimer(1, 6);
     print();
 }
 
@@ -192,10 +191,9 @@ function addBlock(classname) {
 function updateScore() {
     var score = document.getElementById("score");
     audioPlayer.play();
-    score.innerHTML = String(++point);
+    score.innerHTML = String(point++);
 }
 
-// document.getElementById("end").addEventListener("load", setupEnd());
 function setupEnd() {
     document.getElementById("finalscore").innerHTML = point;
     document.getElementById("martini").innerHTML = frequency("Green Apple Martini");
