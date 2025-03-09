@@ -18,4 +18,4 @@ function setupEnd() {
 }
 
 // // Call this function when the page loads
-// window.onload = setupEnd();
+window.onload = setupEnd();
