@@ -61,13 +61,12 @@ li {
     gap: 1rem;
 }
 .header-right div {
-    padding: 0 1rem;
+    padding: 0 2rem;
+    display: flex;
+    width: 100px;
+    justify-content: center;
     background-color: var(--blue);
     border: 1px solid var(--orange);
-}
-#timer {
-    color: var(--orange);
-    align-content: center;
 }
 
 /* Above Counter */
