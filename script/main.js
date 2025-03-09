@@ -165,7 +165,10 @@ function doOrder(action) {
     setTimeout(function() {
         element.style.visibility = "hidden";
         addBlock(`.serving`);
-        drink = document.getElementById(currOrder.name);
+        if (correctIngred() && action == currOrder.action)
+            drink = document.getElementById(currOrder.name);
+        else
+            drink = document.getElementById("baddrink");
         bartender = document.getElementById("bartender");
         bartendertalk = document.getElementById("bartendertalk");
         drink.style.visibility = "visible";
