@@ -1,0 +1,66 @@
+.outer-container {
+    display: flex;
+    gap: 1rem;
+    height: 100vh;
+    margin: 0 5rem;
+}
+.outer-container div{
+    align-self: center;
+}
+
+h1 {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 64px;
+    color: var(--orange);
+}
+h2 {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+}
+h3 {
+    font-family: "Kalam", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    color: var(--gray);
+}
+p {
+    font-family: "Kalam", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: var(--gray);
+}
+.left-container {
+    flex: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+.left-container button {
+    width: 200px;
+    background-color: var(--blue);
+    border: 1px solid var(--orange);
+    color: var(--orange);
+}
+.left-container button:hover {
+    background-color: var(--orange);
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    transition: 0.3s ease-out;
+}
+.right-container {
+    flex: 40%;
+    background-color: var(--midnight-blue);
+    padding: 5rem 3rem;
+}
+.clip {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
