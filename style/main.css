@@ -46,6 +46,16 @@ li {
     height: 15vh;
     margin: 0 3rem;
 }
+
+.message {
+    display: none; /* Initially hidden */
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    color: var(--orange);
+}
+
 .header-right {
     display: flex;
     gap: 1rem;

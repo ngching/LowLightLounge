@@ -16,16 +16,24 @@ const thai = {
 const avaDrinks = [martini, margarita, thai];
 
 const audioPlayer = document.getElementById('audioPlayer');
+const bgm = document.getElementById('bgm');
 
 let point = 0;
 let currIngred = [];
 let currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
-// let doneOrder = [];
-// let doneOrder = ["Classic Margarita", "Thai Basil Sangria", "Green Apple Martini", "Green Apple Martini"];
+let doneOrder = [];
+// let doneOrder = ["Thai Basil Sangria"];
+
+document.addEventListener("load", setup());
+
+var messageDisplay = document.getElementById("message");    
 
 function setup() {
     countdownTimer(1, 6);
     print();
+    bgm.volume = 0.3;
+    bgm.play(); 
+    // document.getElementById("score").innerHTML = point;
 }
 
 function countdownTimer(minutes, seconds) {
@@ -40,6 +48,9 @@ function countdownTimer(minutes, seconds) {
         seconds--;
         if (seconds >= 0) {
             setTimeout(tick, 1000);
+            clearTimeout();
+        } if (seconds == 7) {
+            lastOrder();
         } else {
             if (minutes >= 1) {
                 setTimeout(function () {
@@ -190,15 +201,10 @@ function addBlock(classname) {
 
 function updateScore() {
     var score = document.getElementById("score");
+    bgm.pause(); 
     audioPlayer.play();
-    score.innerHTML = String(point++);
-}
-
-function setupEnd() {
-    document.getElementById("finalscore").innerHTML = point;
-    document.getElementById("martini").innerHTML = frequency("Green Apple Martini");
-    document.getElementById("margarita").innerHTML = frequency("Classic Margarita");
-    document.getElementById("thai").innerHTML = frequency("Thai Basil Sangria");
+    bgm.play(); 
+    score.innerHTML = String(++point);
 }
 
 function frequency(order) {
@@ -208,4 +214,18 @@ function frequency(order) {
             i++;
     });
     return i;
+}
+
+function finish() {
+    localStorage.setItem("finalScore", point);
+    localStorage.setItem("greenAppleMartini", frequency("Green Apple Martini"));
+    localStorage.setItem("classicMargarita", frequency("Classic Margarita"));
+    localStorage.setItem("thaiBasilSangria", frequency("Thai Basil Sangria"));
+}
+
+function lastOrder() {
+    messageDisplay.style.display = "block"; // Show the message
+    setTimeout(() => {
+        messageDisplay.style.display = "none"; // Hide the message after 2 seconds
+    }, 2000);
 }
