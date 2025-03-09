@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+}
+.outer-container {
+    background-color: skyblue;
+    height: 100vh;
+    margin: 0 3rem;
+}
+
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+}
+.header-right {
+    display: flex;
+    gap: 1rem;
+}
+.header-right div {
+    padding: 1rem;
+    background-color: aquamarine;
+}
+
+/* Above Counter */
+.above-counter-container {
+    display: flex;
+    gap: 1rem;
+    background-color: pink;
+    height: 50vh;
+}
+.above-counter-container div {
+    flex: 1;
+}
+.customer-container {
+
+}
+.order {
+    margin: 1rem;
+}
+
+/* Counter */
+.counter {
+    height: 5vh;
+    background-color: bisque;
+}
+
+/* Under Counter */
+.under-counter-container {
+    height: 30vh;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+.under-counter-bar-stock {
+    flex: 70%;
+    display: flex;
+}
+.under-counter-bar-stock button {
+    flex: 1;
+    margin: 1rem;
+}
+
+.under-counter-garnish{
+    flex: 20%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.under-counter-garnish button {
+    flex: 25%;
+    margin: 1rem;
+}
+
+.under-counter-action {
+    flex: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.under-counter-action button {
+    flex: 1;
+    margin: 1rem;
+}
