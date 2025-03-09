@@ -1,0 +1,79 @@
+.outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    height: 100vh;
+    margin: 0 5rem;
+}
+.outer-container div{
+    align-self: center;
+}
+
+h1 {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 64px;
+    color: var(--midnight-blue);
+    margin: 1rem 0;
+}
+h2 {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    color: var(--midnight-blue);
+    margin: 0;
+}
+h3 {
+    font-family: "Kalam", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    color: var(--gray);
+}
+p {
+    font-family: "Kalam", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    color: var(--midnight-blue);
+    margin: 0.5rem 0;
+}
+.recipt {
+    background-image: url( '/assets/receipt.svg' );
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 1rem;
+}
+.orders {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 1rem 0;
+}
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+a {
+    width: 180px;
+    background-color: transparent;
+    text-decoration: none;
+    border-bottom: 1px solid var(--blue);
+    color: var(--blue);
+}
+a h2 {
+    text-align: center;
+}
+a:hover {
+    border-bottom: 1px solid var(--orange);
+    color: var(--orange);
+    transition: 0.3s ease-out;
+}
+a:hover h2 {
+    color: var(--orange);
+}
