@@ -9,4 +9,5 @@
 
 body {
     background-color: var(--blue);
+    margin: auto 0;
 }

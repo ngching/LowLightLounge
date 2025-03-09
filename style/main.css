@@ -1,10 +1,32 @@
-body {
-    margin: 0;
-}
 .outer-container {
-    background-color: skyblue;
     height: 100vh;
-    margin: 0 3rem;
+}
+h1 {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 64px;
+    color: var(--orange);
+}
+h2 {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+}
+h3 {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    color: var(--orange);
+}
+p {
+    font-family: "Kalam", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: var(--midnight-blue);
 }
 
 /* header */
@@ -12,68 +34,115 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10vh;
+    height: 15vh;
+    margin: 0 3rem;
 }
 .header-right {
     display: flex;
     gap: 1rem;
 }
 .header-right div {
-    padding: 1rem;
-    background-color: aquamarine;
+    padding: 0 1rem;
+    background-color: var(--blue);
+    border: 1px solid var(--orange);
+}
+#timer {
+    color: var(--orange);
+    align-content: center;
 }
 
 /* Above Counter */
 .above-counter-container {
     display: flex;
     gap: 1rem;
-    background-color: pink;
-    height: 50vh;
+    height: 45vh;
+    margin: 0 3rem;
 }
 .above-counter-container div {
     flex: 1;
 }
-.customer-container {
-
+/* Above Counter - Workstation */
+.clock {
+    margin: 3rem 0 0 5rem;
 }
+.action-animation {
+    display: flex;
+    justify-content: flex-end;
+}
+.shake {
+    height: 30vh;
+    transform: rotate(30deg);
+    position: relative;
+    bottom: 2rem;
+}
+.stir {
+    height: 25vh;
+    position: relative;
+    top: 1rem;
+}
+/* Above Counter - Serving*/
+/* .serving {
+    position: relative;
+}
+.bartender-speech-bubble {
+    padding: 1rem 2rem;
+    background-image: url( '/assets/speech_bubble_bartender.svg' );
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+} */
+/* Above Counter - Customer */
 .order {
-    margin: 1rem;
+    padding: 1rem 2rem;
+    background-image: url( '/assets/speech_bubble_customer.svg' );
+    background-repeat: no-repeat;
+}
+.character {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 2.5rem;
 }
 
-.instructions {
-    margin: 1rem;
+.instraction-outer-container {
+    background-color: var(--gray);
+    padding: 1rem 0 1rem 3rem;
 }
 
 /* Counter */
 .counter {
     height: 5vh;
-    background-color: bisque;
+    background-color: var(--midnight-blue);
 }
 
 /* Under Counter */
 .under-counter-container {
     height: 30vh;
     display: flex;
+    align-items: center;
     gap: 1rem;
     padding: 1rem;
+    margin: 0 3rem;
 }
 .under-counter-bar-stock {
     flex: 70%;
     display: flex;
+    align-items: center;
+    gap: 1rem;
 }
-.under-counter-bar-stock button {
+.under-counter-bar-stock div {
     flex: 1;
-    margin: 1rem;
 }
 
 .under-counter-garnish{
     flex: 20%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
 }
-.under-counter-garnish button {
-    flex: 25%;
-    margin: 1rem;
+.under-counter-garnish div {
+    display: flex;
+    justify-content: space-between;
 }
 
 .under-counter-action {
@@ -82,7 +151,7 @@ body {
     flex-direction: column;
 }
 
-.under-counter-action button {
+.under-counter-action div {
     flex: 1;
     margin: 1rem;
 }
