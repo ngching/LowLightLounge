@@ -7,7 +7,7 @@ const martini = {
 };
 const margarita = {
     name: "Classic Margarita",
-    ingred: ["Tequila", "Orange Liquor", "Lime Juice", "Salt", "Lime", "Ice"],
+    ingred: ["Tequila", "Orange Liqueur", "Lime Juice", "Salt", "Lime", "Ice"],
     action: "Shake"
 };
 const thai = {
@@ -24,8 +24,6 @@ let currIngred = [];
 let currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
 let doneOrder = [];
 
-document.addEventListener("load", setup());
-
 function setup() {
     countdownTimer(1, 0);
     print();
@@ -35,9 +33,8 @@ function countdownTimer(minutes, seconds) {
     function tick() {
         if (minutes == 0 && seconds == 0) {
             window.location.href = "end.html";
-            finish();
-            //window.onload = function() {window.document.body.onload = setupEnd};
-        }
+            // document.getElementById("end").addEventListener("load", setupEnd);     
+        }  
         var counter = document.getElementById("timer");
         counter.innerHTML =
             minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
@@ -50,24 +47,44 @@ function countdownTimer(minutes, seconds) {
                     countdownTimer(minutes - 1, 59);
                 }, 1000);
             }
-            // end game
-            // window.location.href = "";
         }
     }
     tick();
 }
 
 function print() {
-    // var customer = document.getElementById("customer");
-    // customer.innerHTML = currOrder.name + " please";
+    displayCustomer();
+    var customer = document.getElementById("customerOrder");
+    customer.innerHTML = "<p>" + currOrder.name + " please <p>";
     var instructions = document.getElementById("instructions");
-    instructions.innerHTML = "Order: " + currOrder.name + "<p> Ingredients: <p> " +
-    currOrder.ingred.join("<p>") + "<p> Action: " + currOrder.action;
+    instructions.innerHTML = "<p> Ingredients: <p> " + printList() + "<p> Action: " + currOrder.action;
+}
+
+function printList() {
+    let list = currOrder.ingred;
+    let output = "<ul>";
+    for (let i = 0; i < list.length; i++) {
+        output = output + "<li>" + list[i] + "</li>";
+    }
+    return output + "</ul>";
+}
+
+function displayCustomer() {
+    var customersArr = ["assets/character_01.svg", "assets/character_02.svg", "assets/character_03.svg"];
+    var randomNum = Math.floor(Math.random() * 3);
+    document.customer.src = customersArr[randomNum];
 }
 
 function addIngred(ingredient) {
     currIngred.push(ingredient);
 }
+
+document.querySelectorAll(".under-counter-container img").forEach(img => {
+    const defaultSrc = img.src;
+    const hoverSrc = defaultSrc.replace("buttons_default", "buttons_hover");
+    img.addEventListener("mouseover", () => img.src = hoverSrc);
+    img.addEventListener("mouseout", () => img.src = defaultSrc);
+});
 
 function correctIngred() {
     let correct = (currOrder.ingred.length == currIngred.length);
@@ -81,25 +98,109 @@ function correctIngred() {
     return correct;
 }
 
+// function doOrder(action) {
+//     if (action == "Stir")
+//         element = document.getElementById("stirring");
+//     else
+//         element = document.getElementById("shaking");
+//     element.style.visibility = "visible";
+//     setTimeout(function() {
+//         element.style.visibility = "hidden";
+//         if (correctIngred() && action == currOrder.action) {
+//             doneOrder.push(currOrder.name);
+//             updateScore();
+//         }
+//         currIngred = [];
+//         currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
+//         print();
+//     }, 1000);
+// }
+
+// function doOrder(action) {
+//     if (action == "Stir")
+//         element = document.getElementById("stirring");
+//     else
+//         element = document.getElementById("shaking");
+//     element.style.visibility = "visible";
+//     setTimeout(function() {
+//         element.style.visibility = "hidden";
+//         document.getElementById("")
+//         drink = document.getElementById("drink");
+//         bartender = document.getElementById("bartender");
+//         bartendertalk = document.getElementById("bartendertalk");
+//         drink.style.visibility = "visible";
+//         bartender.style.visibility = "visible";
+//         bartendertalk.style.visibility = "visible";
+//         setTimeout(function() {
+//             // drink.style.visibility = "hidden";
+//             // bartender.style.visibility = "hidden";
+//             // bartendertalk.style.visibility = "hidden";
+//             if (correctIngred() && action == currOrder.action) {
+//                 doneOrder.push(currOrder.name);
+//                 updateScore();
+//             }
+//             currIngred = [];
+//             currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
+//             print();
+//         }, 800);
+//     }, 1000);
+// }
+
 function doOrder(action) {
-    element = document.getElementById("animation");
+    if (action == "Stir")
+        element = document.getElementById("stirring");
+    else
+        element = document.getElementById("shaking");
     element.style.visibility = "visible";
     setTimeout(function() {
-        document.getElementById("test").style.visibility = "hidden";
-        if (correctIngred() && action == currOrder.action) {
-            doneOrder.push(currOrder.name);
-            updateScore();
-        }
-        currIngred = [];
-        currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
-        print();
+        element.style.visibility = "hidden";
+        addBlock(`.serving`);
+        drink = document.getElementById(currOrder.name);
+        bartender = document.getElementById("bartender");
+        bartendertalk = document.getElementById("bartendertalk");
+        drink.style.visibility = "visible";
+        bartender.style.visibility = "visible";
+        bartendertalk.style.visibility = "visible";
+        setTimeout(function() {
+            drink.style.visibility = "hidden";
+            bartender.style.visibility = "hidden";
+            bartendertalk.style.visibility = "hidden";
+            hideBlock(`.serving`);
+            if (correctIngred() && action == currOrder.action) {
+                doneOrder.push(currOrder.name);
+                updateScore();
+            }
+            currIngred = [];
+            currOrder = avaDrinks[Math.floor(Math.random() * avaDrinks.length)];
+            print();
+        }, 800);
     }, 1000);
+}
+
+function hideBlock(classname) {
+    document.querySelectorAll(classname).forEach(element => {
+        element.style.display = "none";
+    })
+}
+
+function addBlock(classname) {
+    document.querySelectorAll(classname).forEach(element => {
+        element.style.display = "block";
+    })
 }
 
 function updateScore() {
     var score = document.getElementById("score");
     audioPlayer.play();
     score.innerHTML = String(++point);
+}
+
+// document.getElementById("end").addEventListener("load", setupEnd());
+function setupEnd() {
+    document.getElementById("finalscore").innerHTML = point;
+    document.getElementById("martini").innerHTML = frequency("Green Apple Martini");
+    document.getElementById("margarita").innerHTML = frequency("Classic Margarita");
+    document.getElementById("thai").innerHTML = frequency("Thai Basil Sangria");
 }
 
 function frequency(order) {
@@ -109,11 +210,4 @@ function frequency(order) {
             i++;
     });
     return i;
-}
-
-function finish() {
-    localStorage.setItem("finalScore", point);
-    localStorage.setItem("greenAppleMartini", frequency("Green Apple Martini"));
-    localStorage.setItem("classicMargarita", frequency("Classic Margarita"));
-    localStorage.setItem("thaiBasilSangria", frequency("Thai Basil Sangria"));
 }

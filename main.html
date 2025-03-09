@@ -11,19 +11,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almendra+SC&family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="setup()">
     <div class="outer-container">
 
         <div class="header">
             <div>
-                <img src="/assets/logo_horizontal.svg" alt="Low Light Lounge logo horizontal" />
+                <img id="drink" class="test" src="/assets/logo_horizontal.svg" alt="Low Light Lounge logo horizontal" />
             </div>
             <div class="header-right">
                 <div>
                     <h3>Score: <span id = "score">0</span></h3>
                 </div>
                 <!-- style timer later -->
-                <div id = "timer">Timer</div>
+                <div id = "timer"><h3>Timer</h3></div>
                 <!-- <div>0 Order Served</div> -->
             </div>
         </div>
@@ -35,18 +35,18 @@
                 </div>
                 <div class="action-animation">
                     <img class="shake" src="/assets/shake.gif" alt="Shake" id="shaking"/>
-                    <!-- <img class="stir" src="/assets/stir.gif" alt="Stir" id="stirring" /> -->
+                    <img class="stir" src="/assets/stir.gif" alt="Stir" id="stirring" />
                 </div>
                 <div class="serving">
                     <div class="serving-top">
-                        <img src="/assets/speech_bubble_bartender.svg" alt="bartender speak bubble" />
+                        <img src="/assets/speech_bubble_bartender.svg" alt="bartender speak bubble" id="bartendertalk"/>
                         <div class="cocktail">
-                            <img src="/assets/cocktail/green_apple_martini.svg" alt="Green apple martini" />
-                            <!-- <img src="/assets/cocktail/classic_margarita.svg" alt="Classic Margarita" />
-                            <img src="/assets/cocktail/thai_basil_sangria.svg" alt="Thai Basil Sangria" /> -->
+                            <img src="/assets/cocktail/green_apple_martini.svg" alt="Green Apple Martini" id="Green Apple Martini"/>
+                            <img src="/assets/cocktail/classic_margarita.svg" alt="Classic Margarita" id="Classic Margarita"/>
+                            <img src="/assets/cocktail/thai_basil_sangria.svg" alt="Thai Basil Sangria" id="Thai Basil Sangria" />
                         </div>
                     </div>
-                    <div class="bartender"><img src="/assets/barternder.svg" alt="bartender"/></div>
+                    <div class="bartender" id="bartender"><img src="/assets/barternder.svg" alt="bartender"/></div>
                 </div>
             </div>
             <div class="customer-container">
@@ -101,14 +101,14 @@
     </div>
     <script src="./script/main.js"></script>
     <!-- <script> -->
-        // can move to main.js later
+        <!-- // can move to main.js later
         // document.querySelectorAll(".under-counter-container img").forEach(img => {
         //     const defaultSrc = img.src;
         //     const hoverSrc = defaultSrc.replace("buttons_default", "buttons_hover");
 
         //     img.addEventListener("mouseover", () => img.src = hoverSrc);
         //     img.addEventListener("mouseout", () => img.src = defaultSrc);
-        // });
+        // }); -->
     <!-- </script> -->
 </body>
 </html>

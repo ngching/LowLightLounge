@@ -29,6 +29,14 @@ p {
     color: var(--midnight-blue);
     margin: 0;
 }
+li {
+    font-family: "Kalam", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    color: var(--midnight-blue);
+    margin: 0;
+}
 
 /* header */
 .header {
@@ -94,20 +102,24 @@ p {
     position: fixed;
     bottom: -10px;
     margin: 3rem 0 0 6rem;
+    display: none;
 }
 .serving-top {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     gap: 3rem;
+    visibility: hidden;
 }
 .cocktail {
     position: relative;
     top: 3rem;
+    visibility: hidden;
 }
 .bartender {
     position: relative;
     right: 12rem;
+    visibility: hidden;
     /* top: 3rem; */
 }
 .bartender img{
